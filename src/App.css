@@ -7,6 +7,43 @@
   pointer-events: none;
 }
 
+body {
+  font-family: "Domine", serif;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* ✅ Hindari horizontal scroll */
+}
+
+.background-gif-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 100vw;
+  height: 200px;
+  overflow: hidden;
+}
+
+.background-gif-wrapper img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.5);
+}
+
+.background-gif-text {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  font-weight: bold;
+  font-size: 2.5rem;
+  color: white;
+  line-height: 200px;
+  margin: 0;
+}
+
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -36,3 +73,4 @@
     transform: rotate(360deg);
   }
 }
+
