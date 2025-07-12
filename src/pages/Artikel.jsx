@@ -2,7 +2,6 @@ import React, { useEffect, useState, useCallback } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import iconCal from '../assets/calendar.png'; // pastikan file ada
 import iconAuth from '../assets/writer.png';   // pastikan file ada
 
@@ -34,61 +33,60 @@ const ArtikelDetail = () => {
   }, [fetchArtikel]);
 
   if (loading) {
-    return <p className="text-center mt-5">Memuat detail artikel...</p>;
+    return <p className="text-center mt-20">Memuat detail artikel...</p>;
   }
 
   if (!artikel) {
-    return <p className="text-center mt-5">Artikel tidak ditemukan.</p>;
+    return <p className="text-center mt-20">Artikel tidak ditemukan.</p>;
   }
 
   return (
-    <div className="bg-light pt-5 pb-5" style={{ minHeight: '100vh' }}>
-      <div className="container" data-aos="fade-up">
-        <Link to="/daftar-artikel" className="btn btn-outline-primary mb-4">← Kembali ke Daftar Artikel</Link>
+    <div className="bg-gray-50 py-8 min-h-screen">
+      <div className="container mx-auto px-4 max-w-4xl" data-aos="fade-up">
+        <Link to="/daftar-artikel" className="inline-block px-4 py-2 border border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white rounded transition-colors duration-200 mb-6">← Kembali ke Daftar Artikel</Link>
 
-        <div className="card shadow-sm p-4">
-          <div className="card-body">
-            <h1 className="mb-3">{artikel.judul_berita}</h1>
+        <article className="bg-white rounded-lg shadow-md p-8">
+          <div>
+            <h1 className="mb-6 text-3xl font-bold text-gray-800">{artikel.judul_berita}</h1>
 
-            <div className="row mb-4">
-              <div className="col-md-6 d-flex align-items-center mb-2 mb-md-0">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+              <div className="flex items-center mb-2 md:mb-0">
                 <img 
                   src={iconCal} 
                   alt="Tanggal" 
                   style={{ width: '24px', height: '24px' }} 
-                  className="me-2" 
+                  className="mr-2" 
                 />
-                <h6 className="mb-0">{artikel.tanggal_berita}</h6>
+                <h6 className="text-gray-600 font-medium">{artikel.tanggal_berita}</h6>
               </div>
-              <div className="col-md-6 d-flex align-items-center">
+              <div className="flex items-center">
                 <img 
                   src={iconAuth} 
                   alt="Penulis" 
                   style={{ width: '24px', height: '24px' }} 
-                  className="me-2" 
+                  className="mr-2" 
                 />
-                <h6 className="mb-0">{artikel.author_berita}</h6>
+                <h6 className="text-gray-600 font-medium">{artikel.author_berita}</h6>
               </div>
             </div>
 
             {artikel.foto_berita && (
-              <div className="text-center my-4">
+              <div className="text-center my-6">
                 <img 
                   src={artikel.foto_berita} 
                   alt={artikel.judul_berita} 
-                  className="img-fluid rounded shadow-sm" 
+                  className="max-w-full h-auto rounded shadow-sm" 
                   style={{ maxWidth: '1000px', width: '100%', height: 'auto' }}
                 />
               </div>
             )}
 
             <div 
-              className="mt-4" 
-              style={{ fontSize: '1.1em', lineHeight: '1.8' }}
+              className="mt-6 text-lg leading-relaxed prose prose-lg max-w-none" 
               dangerouslySetInnerHTML={{ __html: artikel.teks }}
             ></div>
           </div>
-        </div>
+        </article>
       </div>
     </div>
   );

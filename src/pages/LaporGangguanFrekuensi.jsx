@@ -47,9 +47,9 @@ const GangguanFrekuensi = () => {
       </div>
 
       {/* Deskripsi + Gambar */}
-      <div className="container py-5" style={styles.gangguanWrapper}>
-        <div className="row align-items-center mb-5">
-          <div className="col-md-6" data-aos="fade-right">
+      <div className="container mx-auto px-4 max-w-6xl py-5" style={styles.gangguanWrapper}>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-center mb-5">
+          <div className="" data-aos="fade-right">
             <h3 style={styles.gangguanSubtitle}>Prosedur Pelaporan Gangguan</h3>
             <ul style={styles.gangguanDescription}>
               <li>Login menggunakan akun eksternal SDPPI</li>
@@ -62,26 +62,26 @@ const GangguanFrekuensi = () => {
               href="https://laporgangguansfr.postel.go.id/index.php?class=LoginForm"
               target="_blank"
               rel="noreferrer"
-              className="btn btn-primary mt-3"
+              className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 mt-3 inline-block"
               data-aos="zoom-in"
             >
               Lapor Gangguan &gt;
             </a>
           </div>
-          <div className="col-md-6 text-center" data-aos="fade-left">
+          <div className="text-center" data-aos="fade-left">
             <img
               src={alurPenanganan}
               alt="Alur Penanganan"
-              className="img-fluid rounded shadow"
+              className="max-w-full h-auto rounded shadow-lg"
               style={styles.gangguanImage}
             />
           </div>
         </div>
 
         {/* Cards Interaktif */}
-        <div className="row">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {cardsData.map((card, index) => (
-            <div className="col-md-6 mb-4" key={index} data-aos="fade-up" data-aos-delay={index * 200}>
+            <div className="mb-4" key={index} data-aos="fade-up" data-aos-delay={index * 200}>
               <div
                 onClick={() =>
                   setSelectedCard(selectedCard === index ? null : index)

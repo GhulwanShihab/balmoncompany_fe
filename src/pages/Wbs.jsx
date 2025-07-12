@@ -18,7 +18,7 @@ const WBS = () => {
       </div>
 
       {/* Konten vertikal */}
-      <div className="container py-5 text-center" style={styles.wbsWrapper}>
+      <div className="container mx-auto px-4 max-w-6xl py-5 text-center" style={styles.wbsWrapper}>
         <h2 className="mb-4" data-aos="fade-up" style={styles.wbsSubtitle}>
           Jangan takut melapor! Karena identitas pelapor <span style={{ color: '#007bff' }}>AMAN</span>.
         </h2>
@@ -27,7 +27,7 @@ const WBS = () => {
           href="https://wbs.kominfo.go.id/"
           target="_blank"
           rel="noreferrer"
-          className="btn btn-primary btn-lg mb-5"
+          className="bg-blue-500 text-white px-6 py-3 rounded hover:bg-blue-600 text-lg mb-5 inline-block"
           data-aos="zoom-in"
         >
           Lapor Pelanggaran &gt;
@@ -37,7 +37,7 @@ const WBS = () => {
           <img
             src={wbsImage}
             alt="Whistleblowing System"
-            className="img-fluid rounded shadow"
+            className="max-w-full h-auto rounded shadow-lg"
             style={styles.wbsImage}
           />
         </div>

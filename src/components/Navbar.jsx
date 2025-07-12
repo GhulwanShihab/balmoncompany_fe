@@ -28,104 +28,104 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="navbar navbar-expand-lg bg-white border-bottom sticky-top shadow-sm">
-      <div className="container">
-        {/* Logo sebagai brand */}
-        <Link className="navbar-brand" to="/">
-          <img src={logo} alt="Balmon" style={{ height: '50px' }} />
-        </Link>
+    <nav className="bg-white border-b sticky top-0 shadow-sm z-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16">
+          {/* Logo sebagai brand */}
+          <Link className="flex items-center" to="/">
+            <img src={logo} alt="Balmon" className="h-8 sm:h-10 w-auto" />
+          </Link>
 
-        {/* Toggle button untuk mobile */}
-        <button
-          className="navbar-toggler"
-          type="button"
-          onClick={handleNavCollapse}
-        >
-          <span className="navbar-toggler-icon" />
-        </button>
+          {/* Toggle button untuk mobile */}
+          <button
+            className="lg:hidden inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500"
+            type="button"
+            onClick={handleNavCollapse}
+          >
+            <span className="sr-only">Open main menu</span>
+            <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
 
-        {/* Navigasi utama */}
-        <div className={`${isNavCollapsed ? 'collapse' : ''} navbar-collapse justify-content-end`} id="navbarNav">
-          <ul className="navbar-nav nav nav-tabs align-items-center">
+          {/* Navigasi utama */}
+          <div className={`${isNavCollapsed ? 'hidden' : 'block'} lg:flex lg:items-center lg:justify-end lg:flex-1 absolute lg:relative top-16 lg:top-0 left-0 right-0 bg-white lg:bg-transparent shadow-lg lg:shadow-none`}>
+          <ul className="lg:flex lg:space-x-8 lg:items-center py-4 lg:py-0">
 
-            <li className="nav-item">
-              <Link className="nav-link active" to="/">Beranda</Link>
+            <li className="block lg:inline-block">
+              <Link className="block lg:inline-block text-blue-600 hover:text-blue-800 px-4 py-2 lg:px-0" to="/">Beranda</Link>
             </li>
 
-            <li className="nav-item dropdown">
+            <li className="relative block lg:inline-block">
               <div 
-                className="nav-link dropdown-toggle" 
+                className="block lg:inline-block text-gray-700 hover:text-blue-600 px-4 py-2 lg:px-0 cursor-pointer" 
                 onClick={() => handleDropdownToggle('profil')}
-                style={{ cursor: 'pointer' }}
               >
                 Profil
               </div>
               {activeDropdown === 'profil' && (
-                <ul className="dropdown-menu show">
-                  <li><Link className="dropdown-item" to="/struktur-organisasi" onClick={() => setActiveDropdown(null)}>Struktur Organisasi</Link></li>
-                  <li><Link className="dropdown-item" to="/visi-misi" onClick={() => setActiveDropdown(null)}>Visi & Misi</Link></li>
-                  <li><Link className="dropdown-item" to="/tugas-fungsi" onClick={() => setActiveDropdown(null)}>Tugas & Fungsi</Link></li>
+                <ul className="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-10">
+                  <li><Link className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" to="/struktur-organisasi" onClick={() => setActiveDropdown(null)}>Struktur Organisasi</Link></li>
+                  <li><Link className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" to="/visi-misi" onClick={() => setActiveDropdown(null)}>Visi & Misi</Link></li>
+                  <li><Link className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" to="/tugas-fungsi" onClick={() => setActiveDropdown(null)}>Tugas & Fungsi</Link></li>
                 </ul>
               )}
             </li>
 
-            <li className="nav-item dropdown">
+            <li className="relative block lg:inline-block">
               <div 
-                className="nav-link dropdown-toggle" 
+                className="block lg:inline-block text-gray-700 hover:text-blue-600 px-4 py-2 lg:px-0 cursor-pointer" 
                 onClick={() => handleDropdownToggle('pelayanan')}
-                style={{ cursor: 'pointer' }}
               >
                 Pelayanan
               </div>
               {activeDropdown === 'pelayanan' && (
-                <ul className="dropdown-menu show">
-                  <li><Link className="dropdown-item" to="/layanan-sfr-sor" onClick={() => setActiveDropdown(null)}>Izin SFR & SOR</Link></li>
-                  <li><Link className="dropdown-item" to="/izin-amatir-ikrap" onClick={() => setActiveDropdown(null)}>Izin Amatir Radio & IKRAP</Link></li>
-                  <li><Link className="dropdown-item" to="/izin-stasiun-radio" onClick={() => setActiveDropdown(null)}>Izin Stasiun Radio</Link></li>
-                  <li><Link className="dropdown-item" to="/perpanjangan-reor" onClick={() => setActiveDropdown(null)}>Perpanjangan Sertifikat REOR</Link></li>
-                  <li><a className="dropdown-item" href="https://sertifikasi.postel.go.id/" target="_blank" rel="noopener noreferrer" onClick={() => setActiveDropdown(null)}>Sertifikasi Alat & Perangkat</a></li>
-                  <li><a className="dropdown-item" href="https://www.postel.go.id/sdppi_maps/10-20200601-sdppi-maps-simulasi-bhp.php" target="_blank" rel="noopener noreferrer" onClick={() => setActiveDropdown(null)}>Simulasi BPH Frekuensi</a></li>
+                <ul className="absolute left-0 mt-2 w-64 bg-white rounded-md shadow-lg py-1 z-10">
+                  <li><Link className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" to="/layanan-sfr-sor" onClick={() => setActiveDropdown(null)}>Izin SFR & SOR</Link></li>
+                  <li><Link className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" to="/izin-amatir-ikrap" onClick={() => setActiveDropdown(null)}>Izin Amatir Radio & IKRAP</Link></li>
+                  <li><Link className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" to="/izin-stasiun-radio" onClick={() => setActiveDropdown(null)}>Izin Stasiun Radio</Link></li>
+                  <li><Link className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" to="/perpanjangan-reor" onClick={() => setActiveDropdown(null)}>Perpanjangan Sertifikat REOR</Link></li>
+                  <li><a className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" href="https://sertifikasi.postel.go.id/" target="_blank" rel="noopener noreferrer" onClick={() => setActiveDropdown(null)}>Sertifikasi Alat & Perangkat</a></li>
+                  <li><a className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" href="https://www.postel.go.id/sdppi_maps/10-20200601-sdppi-maps-simulasi-bhp.php" target="_blank" rel="noopener noreferrer" onClick={() => setActiveDropdown(null)}>Simulasi BPH Frekuensi</a></li>
                 </ul>
               )}
             </li>
 
-            <li className="nav-item dropdown">
+            <li className="relative block lg:inline-block">
               <div 
-                className="nav-link dropdown-toggle" 
+                className="block lg:inline-block text-gray-700 hover:text-blue-600 px-4 py-2 lg:px-0 cursor-pointer" 
                 onClick={() => handleDropdownToggle('program')}
-                style={{ cursor: 'pointer' }}
               >
                 Program
               </div>
               {activeDropdown === 'program' && (
-                <ul className="dropdown-menu show">
-                  <li><Link className="dropdown-item" to="/mots" onClick={() => setActiveDropdown(null)}>MOTS</Link></li>
-                  <li><Link className="dropdown-item" to="/lapor-gangguan-frekuensi" onClick={() => setActiveDropdown(null)}>Lapor Gangguan Frekuensi</Link></li>
-                  <li><Link className="dropdown-item" to="/wbs" onClick={() => setActiveDropdown(null)}>Whistle Blowing System (WBS)</Link></li>
-                  <li><Link className="dropdown-item" to="/lapor-sp4n" onClick={() => setActiveDropdown(null)}>SP4N Lapor!</Link></li>
+                <ul className="absolute left-0 mt-2 w-64 bg-white rounded-md shadow-lg py-1 z-10">
+                  <li><Link className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" to="/mots" onClick={() => setActiveDropdown(null)}>MOTS</Link></li>
+                  <li><Link className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" to="/lapor-gangguan-frekuensi" onClick={() => setActiveDropdown(null)}>Lapor Gangguan Frekuensi</Link></li>
+                  <li><Link className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" to="/wbs" onClick={() => setActiveDropdown(null)}>Whistle Blowing System (WBS)</Link></li>
+                  <li><Link className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" to="/lapor-sp4n" onClick={() => setActiveDropdown(null)}>SP4N Lapor!</Link></li>
                 </ul>
               )}
             </li>
 
-            <li className="nav-item dropdown">
+            <li className="relative block lg:inline-block">
               <div 
-                className="nav-link dropdown-toggle" 
+                className="block lg:inline-block text-gray-700 hover:text-blue-600 px-4 py-2 lg:px-0 cursor-pointer" 
                 onClick={() => handleDropdownToggle('publikasi')}
-                style={{ cursor: 'pointer' }}
               >
                 Publikasi
               </div>
               {activeDropdown === 'publikasi' && (
-                <ul className="dropdown-menu show">
-                  <li><Link className="dropdown-item" to="/daftar-artikel" onClick={() => setActiveDropdown(null)}>Artikel</Link></li>
-                  <li><Link className="dropdown-item" to="/daftar-foto" onClick={() => setActiveDropdown(null)}>Galeri Foto</Link></li>
-                  <li><Link className="dropdown-item" to="/daftar-video" onClick={() => setActiveDropdown(null)}>Galeri Video</Link></li>
+                <ul className="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-10">
+                  <li><Link className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" to="/daftar-artikel" onClick={() => setActiveDropdown(null)}>Artikel</Link></li>
+                  <li><Link className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" to="/daftar-foto" onClick={() => setActiveDropdown(null)}>Galeri Foto</Link></li>
+                  <li><Link className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" to="/daftar-video" onClick={() => setActiveDropdown(null)}>Galeri Video</Link></li>
                 </ul>
               )}
             </li>
 
-            <li className="nav-item">
-              <Link className="nav-link" to="/kontak">Kontak</Link>
+            <li className="block lg:inline-block">
+              <Link className="block lg:inline-block text-gray-700 hover:text-blue-600 px-4 py-2 lg:px-0" to="/kontak">Kontak</Link>
             </li>
 
             {/* Tombol Login 
@@ -133,20 +133,14 @@ const Navbar = () => {
               <button className="btn btn-outline-primary">Login</button>
             </li> */}
           </ul>
+          </div>
         </div>
       </div>
       
       {/* Overlay untuk menutup dropdown saat klik di luar */}
       {activeDropdown && (
         <div 
-          style={{
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            zIndex: -1
-          }}
+          className="fixed inset-0 -z-10"
           onClick={handleClickOutside}
         />
       )}

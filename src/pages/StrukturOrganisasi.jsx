@@ -137,11 +137,11 @@ const StrukturOrganisasi = () => {
 
       {/* 🔷 Konten Pegawai */}
       <div style={strukturPageWrapperStyle}>
-        <div className="container">
+        <div className="container mx-auto px-4 max-w-6xl">
           {/* Kepala Balmon Section */}
           {kepalaBalmon && (
-            <div className="row mb-4" data-aos="fade-up">
-              <div className="col-12 col-sm-6 col-md-4 mx-auto">
+            <div className="grid grid-cols-1 mb-4" data-aos="fade-up">
+              <div className="col-span-12 sm:col-span-6 md:col-span-4 mx-auto">
                 <div style={kepalaBalmonCardStyle}>
                   <img
                     src={`http://localhost:8000/storage/${kepalaBalmon.foto}`}
@@ -161,18 +161,18 @@ const StrukturOrganisasi = () => {
 
           {/* Divider */}
           {kepalaBalmon && (
-            <div className="row mb-4" data-aos="fade-up" data-aos-delay="200">
-              <div className="col-12 text-center">
+            <div className="grid grid-cols-1 mb-4" data-aos="fade-up" data-aos-delay="200">
+              <div className="col-span-12 text-center">
                 <hr style={{ width: '50%', margin: '0 auto', borderTop: '2px solid #003366' }} />
               </div>
             </div>
           )}
 
           {/* Staff Section */}
-          <div className="row g-4 justify-content-center">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 justify-center">
             {staffPegawai.map((item, index) => (
               <div
-                className="col-12 col-sm-6 col-md-4"
+                className="col-span-12 sm:col-span-1 md:col-span-1"
                 key={item.id}
                 data-aos="fade-up"
                 data-aos-delay={index * 100}
@@ -194,7 +194,7 @@ const StrukturOrganisasi = () => {
             ))}
 
             {pegawai.length === 0 && (
-              <div className="col-12 text-center mt-4">
+              <div className="col-span-12 text-center mt-4">
                 <p>Belum ada data struktur organisasi.</p>
               </div>
             )}

@@ -11,94 +11,51 @@ const VisiMisi = () => {
 
   return (
     <>
-      {/* 🔷 Background GIF Header */}
-      <div
-        style={{
-          position: 'relative',
-          width: '100%',
-          height: '200px',
-          overflow: 'hidden',
-        }}
-      >
+      {/* Background GIF Header */}
+      <div className="relative w-full h-48 overflow-hidden">
         <img
           src={bgHeadingGif}
           alt="Heading Background"
-          style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-            filter: 'brightness(0.5)',
-            zIndex: 1,
-          }}
+          className="absolute top-0 left-0 w-full h-full object-cover brightness-50 z-10"
         />
-        <h1
-          style={{
-            position: 'relative',
-            zIndex: 2,
-            textAlign: 'center',
-            fontWeight: 'bold',
-            fontSize: '2.5rem',
-            color: '#fff',
-            lineHeight: '200px',
-            margin: 0,
-          }}
-        >
+        <h1 className="relative z-20 text-center font-bold text-4xl text-white flex items-center justify-center h-full m-0">
           Visi & Misi
         </h1>
       </div>
 
-      {/* 🔷 Konten */}
-      <div
-        style={{
-          backgroundColor: '#fff',
-          padding: '2rem 1rem 4rem',
-          color: '#003366',
-          minHeight: '100vh',
-        }}
-      >
-        <div className="container">
-          <div className="row align-items-center g-4">
+      {/* Konten */}
+      <div className="bg-white py-8 px-4 pb-16 text-[#003366] min-h-screen">
+        <div className="container mx-auto px-4 max-w-7xl">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
             {/* Kolom Teks */}
-            <div className="col-12 col-md-6" data-aos="fade-right">
-              <div
-                style={{
-                  fontSize: '1.1rem',
-                  lineHeight: '1.8',
-                }}
-              >
-                <h2 style={{ textAlign: 'left' }}>Visi</h2>
-                <p style={{ textAlign: 'left' }}>
+            <div className="" data-aos="fade-right">
+              <div className="text-lg leading-relaxed">
+                <h2 className="text-2xl font-bold mb-4 text-left text-[#003366]">Visi</h2>
+                <p className="text-left mb-6">
                   Terwujudnya Indonesia Maju yang Berdaulat, Mandiri, dan Berkepribadian Berlandaskan Gotong Royong
                 </p>
 
-                <h2 style={{ textAlign: 'left' }}>Misi</h2>
-                <ul style={{ textAlign: 'left' }}>
-                  <li>Peningkatan Kualitas Manusia Indonesia</li>
-                  <li>Struktur Ekonomi yang Produktif, Mandiri, dan Berdaya Saing</li>
-                  <li>Pembangunan yang Merata dan Berkeadilan</li>
-                  <li>Mencapai Lingkungan Hidup yang Berkelanjutan</li>
-                  <li>Kemajuan Budaya yang Mencerminkan Kepribadian Bangsa</li>
-                  <li>Penegakan Sistem Hukum yang Bebas Korupsi, Bermartabat, dan Terpercaya</li>
-                  <li>Perlindungan bagi Segenap Bangsa dan Memberikan Rasa Aman pada Seluruh Warga</li>
-                  <li>Pengelolaan Pemerintahan yang Bersih, Efektif, dan Terpercaya</li>
-                  <li>Sinergi Pemerintah Daerah dalam Kerangka Negara Kesatuan</li>
+                <h2 className="text-2xl font-bold mb-4 text-left text-[#003366]">Misi</h2>
+                <ul className="text-left space-y-2">
+                  <li className="pl-2">Peningkatan Kualitas Manusia Indonesia</li>
+                  <li className="pl-2">Struktur Ekonomi yang Produktif, Mandiri, dan Berdaya Saing</li>
+                  <li className="pl-2">Pembangunan yang Merata dan Berkeadilan</li>
+                  <li className="pl-2">Mencapai Lingkungan Hidup yang Berkelanjutan</li>
+                  <li className="pl-2">Kemajuan Budaya yang Mencerminkan Kepribadian Bangsa</li>
+                  <li className="pl-2">Penegakan Sistem Hukum yang Bebas Korupsi, Bermartabat, dan Terpercaya</li>
+                  <li className="pl-2">Perlindungan bagi Segenap Bangsa dan Memberikan Rasa Aman pada Seluruh Warga</li>
+                  <li className="pl-2">Pengelolaan Pemerintahan yang Bersih, Efektif, dan Terpercaya</li>
+                  <li className="pl-2">Sinergi Pemerintah Daerah dalam Kerangka Negara Kesatuan</li>
                 </ul>
               </div>
             </div>
 
             {/* Kolom Gambar */}
-            <div className="col-12 col-md-6" data-aos="fade-left">
+            <div className="" data-aos="fade-left">
               <img
                 src={visiImage}
                 alt="Visi dan Misi"
-                style={{
-                  width: '100%',
-                  borderRadius: '12px',
-                  objectFit: 'cover',
-                }}
+                className="w-full rounded-xl object-cover shadow-lg"
               />
             </div>
           </div>

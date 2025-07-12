@@ -1,4 +1,3 @@
-// components/Layout.jsx
 import React from 'react';
 import Navbar from './Navbar';
 import Footer from './Footer';
@@ -12,7 +11,7 @@ const Layout = () => {
       <ScrollToTop />
       <Navbar />
       <main>
-        <Outlet /> {/* 👈 Di sini semua page akan dirender */}
+        <Outlet />
       </main>
       <Footer />
       <FloatingWhatsApp />

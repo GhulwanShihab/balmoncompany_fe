@@ -54,39 +54,31 @@ const ListVideoHome = () => {
   };
 
   return (
-    <div style={{ backgroundColor: "#f8f9fa", padding: "3rem 1rem" }}>
-      <div className="container">
-        <div style={{ textAlign: "center", marginBottom: "2rem" }}>
-          <h2 style={{ fontWeight: "bold", fontSize: "2rem", color: "#003366" }}>
+    <div className="bg-gray-50 py-12 px-4">
+      <div className="container mx-auto px-4 max-w-7xl">
+        <div className="text-center mb-8">
+          <h2 className="text-3xl font-bold text-[#003366]">
             Video Terkini
           </h2>
         </div>
 
         {loading ? (
-          <p className="text-center">Memuat video...</p>
+          <p className="text-center text-gray-600">Memuat video...</p>
         ) : error ? (
-          <p className="text-center text-danger">{error}</p>
+          <p className="text-center text-red-600">{error}</p>
         ) : videos.length === 0 ? (
-          <p className="text-center">Belum ada video tersedia.</p>
+          <p className="text-center text-gray-600">Belum ada video tersedia.</p>
         ) : (
-          <div className="row g-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {videos.map((video, index) => (
               <div
                 key={video.id}
-                className="col-12 col-md-6 col-lg-4"
+                className=""
                 data-aos="fade-up"
                 data-aos-delay={index * 100}
               >
-                <div style={{
-                  backgroundColor: "#fff",
-                  borderRadius: "12px",
-                  boxShadow: "0 4px 10px rgba(0,0,0,0.1)",
-                  overflow: "hidden",
-                  height: "100%",
-                  display: "flex",
-                  flexDirection: "column"
-                }}>
-                  <div style={{ height: "200px", overflow: "hidden" }}>
+                <div className="bg-white rounded-xl shadow-lg overflow-hidden h-full flex flex-col">
+                  <div className="h-48 overflow-hidden">
                     <iframe
                       width="100%"
                       height="100%"
@@ -97,15 +89,10 @@ const ListVideoHome = () => {
                       allowFullScreen
                     ></iframe>
                   </div>
-                  <div style={{ padding: "1rem", flex: 1 }}>
-                    <h5 style={{
-                      fontSize: "1.1rem",
-                      fontWeight: "bold",
-                      color: "#002244",
-                      marginBottom: "0.5rem"
-                    }} title={video.title}>
+                  <div className="p-4 flex-1">
+                    <h3 className="text-lg font-bold text-[#002244] mb-2" title={video.title}>
                       {video.title}
-                    </h5>
+                    </h3>
                   </div>
                 </div>
               </div>

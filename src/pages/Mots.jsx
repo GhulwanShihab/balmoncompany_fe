@@ -79,44 +79,44 @@ const MOTS = () => {
         <h1 className="background-gif-text">Maritime on The Spot (MoTS)</h1>
       </div>
 
-      <div className="container py-5" style={styles.motsWrapper}>
+      <div className="container mx-auto px-4 max-w-6xl py-5" style={styles.motsWrapper}>
         {/* 🟨 Main Info */}
-        <div className="row align-items-center mb-5">
-          <div className="col-md-6" data-aos="fade-right">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-center mb-5">
+          <div className="" data-aos="fade-right">
             <h3 style={styles.motsSubtitle}>Program MoTS</h3>
             <p style={styles.motsDescription}>
               MoTS adalah program afirmatif jemput bola oleh Balmon Lampung untuk membantu nelayan mendapatkan sertifikasi operator dan izin radio secara mudah, cepat, dan gratis di lokasi pelabuhan.
             </p>
           </div>
-          <div className="col-md-6 text-center" data-aos="fade-left">
-            <img src={nelayanImage} alt="Nelayan" className="img-fluid rounded shadow" style={{ maxWidth: '50%', height: 'auto' }} />
+          <div className="text-center" data-aos="fade-left">
+            <img src={nelayanImage} alt="Nelayan" className="max-w-full h-auto rounded shadow-lg" style={{ maxWidth: '50%', height: 'auto' }} />
           </div>
         </div>
 
         {/* 🟧 List Tabs */}
-        <div className="row">
-          <div className="col-md-4 mb-4" data-aos="fade-up">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="mb-4" data-aos="fade-up">
             <div
               onClick={() => setSelectedList('list1')}
-              className={`p-3 border rounded shadow-sm ${selectedList === 'list1' ? 'bg-primary text-white' : 'bg-light'}`}
+              className={`p-3 border rounded shadow-sm ${selectedList === 'list1' ? 'bg-blue-500 text-white' : 'bg-gray-100'}`}
               style={{ cursor: 'pointer' }}
             >
               Izin Stasiun Radio (ISR) Maritim
             </div>
           </div>
-          <div className="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="100">
+          <div className="mb-4" data-aos="fade-up" data-aos-delay="100">
             <div
               onClick={() => setSelectedList('list2')}
-              className={`p-3 border rounded shadow-sm ${selectedList === 'list2' ? 'bg-primary text-white' : 'bg-light'}`}
+              className={`p-3 border rounded shadow-sm ${selectedList === 'list2' ? 'bg-blue-500 text-white' : 'bg-gray-100'}`}
               style={{ cursor: 'pointer' }}
             >
               Izin Komunikasi Radio Nelayan (IKRAN)
             </div>
           </div>
-          <div className="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+          <div className="mb-4" data-aos="fade-up" data-aos-delay="200">
             <div
               onClick={() => setSelectedList('list3')}
-              className={`p-3 border rounded shadow-sm ${selectedList === 'list3' ? 'bg-primary text-white' : 'bg-light'}`}
+              className={`p-3 border rounded shadow-sm ${selectedList === 'list3' ? 'bg-blue-500 text-white' : 'bg-gray-100'}`}
               style={{ cursor: 'pointer' }}
             >
               Bimbingan Teknis Sertifikat Operator Radio (SRC/LRC)
@@ -125,8 +125,8 @@ const MOTS = () => {
         </div>
 
         {/* 🟩 Content */}
-        <div className="row mt-4">
-          <div className="col-md-12" data-aos="fade-up">
+        <div className="grid grid-cols-1 mt-4">
+          <div className="" data-aos="fade-up">
             <div className="p-4 border rounded shadow-sm bg-white" style={styles.motsDescription}>
               {listContent[selectedList]}
             </div>

@@ -1,72 +1,79 @@
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import slide_1 from '../assets/header website.png';
 import slide_2 from '../assets/Khas Lampung.png';
 import slide_3 from '../assets/ZI.png';
 
-
 const Carousel = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const slides = [slide_1, slide_2, slide_3];
+
   useEffect(() => {
-    // Inisialisasi manual carousel setelah render
-    const carouselElement = document.getElementById('myCarousel');
-    if (carouselElement) {
-      // Cegah duplikasi inisialisasi
-      if (!carouselElement.classList.contains('carousel-initialized')) {
-        const bootstrap = require('bootstrap/dist/js/bootstrap.bundle.min.js');
-        new bootstrap.Carousel(carouselElement, {
-          interval: 5000,
-          ride: 'carousel',
-          pause: 'hover',
-        });
-        carouselElement.classList.add('carousel-initialized');
-      }
-    }
-  }, []);
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [slides.length]);
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % slides.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+  };
 
   return (
-    <div
-      id="myCarousel"
-      className="carousel slide"
-      data-bs-ride="carousel"
-      data-bs-interval="5000"
-      data-bs-pause="hover"
-    >
-      <div className="carousel-inner">
-        {[slide_1, slide_2, slide_3].map((slide, idx) => (
+    <div className="relative w-full max-h-[600px] overflow-hidden">
+      <div className="relative h-full">
+        {slides.map((slide, index) => (
           <div
-            className={`carousel-item ${idx === 0 ? 'active' : ''}`}
-            key={idx}
+            key={index}
+            className={`transition-opacity duration-500 ${
+              index === currentSlide ? 'opacity-100' : 'opacity-0 absolute inset-0'
+            }`}
           >
-            <div style={{ maxHeight: '600px', overflow: 'hidden' }}>
-              <img
-                src={slide}
-                className="d-block w-100"
-                alt={`Slide ${idx + 1}`}
-                style={{ height: '100%', width: '100%', objectFit: 'cover' }}
-              />
-            </div>
+            <img
+              src={slide}
+              className="w-full h-auto object-cover"
+              alt={`Slide ${index + 1}`}
+              style={{ maxHeight: '600px', width: '100%', objectFit: 'cover' }}
+            />
           </div>
         ))}
       </div>
 
-      {/* Controls */}
       <button
-        className="carousel-control-prev"
-        type="button"
-        data-bs-target="#myCarousel"
-        data-bs-slide="prev"
+        className="absolute left-2 sm:left-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 sm:p-3 rounded-full hover:bg-opacity-70 transition-all duration-200"
+        onClick={prevSlide}
       >
-        <span className="carousel-control-prev-icon" aria-hidden="true" />
-        <span className="visually-hidden">Previous</span>
+        <svg className="w-4 h-4 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+        </svg>
+        <span className="sr-only">Previous</span>
       </button>
+
       <button
-        className="carousel-control-next"
-        type="button"
-        data-bs-target="#myCarousel"
-        data-bs-slide="next"
+        className="absolute right-2 sm:right-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 sm:p-3 rounded-full hover:bg-opacity-70 transition-all duration-200"
+        onClick={nextSlide}
       >
-        <span className="carousel-control-next-icon" aria-hidden="true" />
-        <span className="visually-hidden">Next</span>
+        <svg className="w-4 h-4 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+        </svg>
+        <span className="sr-only">Next</span>
       </button>
+
+      <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+        {slides.map((_, index) => (
+          <button
+            key={index}
+            className={`w-3 h-3 rounded-full transition-all duration-200 ${
+              index === currentSlide ? 'bg-white' : 'bg-white bg-opacity-50'
+            }`}
+            onClick={() => setCurrentSlide(index)}
+          />
+        ))}
+      </div>
     </div>
   );
 };

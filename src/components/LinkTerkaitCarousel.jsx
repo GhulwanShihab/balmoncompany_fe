@@ -46,36 +46,24 @@ const LinkTerkaitCarousel = () => {
   };
 
   return (
-    <div style={{ padding: "2rem 1rem", backgroundColor: "#f1f1f1" }}>
-      <div className="container">
-        <h4 style={{
-          textAlign: "center",
-          color: "#003366",
-          fontWeight: "bold",
-          marginBottom: "1.5rem"
-        }}>
+    <div className="py-8 px-4 bg-gray-100">
+      <div className="container mx-auto px-4 max-w-7xl">
+        <h2 className="text-2xl font-bold text-[#003366] text-center mb-6">
           Link Terkait
-        </h4>
+        </h2>
         <Slider {...settings}>
           {logoLinks.map((item) => (
-            <div key={item.id} style={{ padding: "0 50px" }}>
+            <div key={item.id} className="px-4">
               <a
                 href={item.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{ display: "flex", justifyContent: "center" }}
+                className="flex justify-center"
               >
                 <img
                   src={item.logo}
                   alt={item.name}
-                  style={{
-                    maxWidth: "100px",
-                    height: "auto",
-                    objectFit: "contain",
-                    transition: "transform 0.3s",
-                  }}
-                  onMouseOver={(e) => (e.currentTarget.style.transform = "scale(1.1)")}
-                  onMouseOut={(e) => (e.currentTarget.style.transform = "scale(1)")}
+                  className="max-w-[100px] h-auto object-contain transition-transform duration-300 hover:scale-110"
                 />
               </a>
             </div>

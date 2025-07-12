@@ -18,25 +18,25 @@ const LaporSp4n = () => {
       </div>
 
       {/* Konten utama */}
-      <div className="container py-5" style={styles.sp4nWrapper}>
-        <div className="row align-items-center">
+      <div className="container mx-auto px-4 max-w-6xl py-5" style={styles.sp4nWrapper}>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
           {/* Kiri - Gambar dan tombol */}
-          <div className="col-md-6 mb-4 mb-md-0 text-center text-md-start" data-aos="fade-right">
+          <div className="mb-4 md:mb-0 text-center md:text-left" data-aos="fade-right">
             <img
               src={laporLogo}
               alt="Lapor Logo"
-              className="img-fluid mb-4"
+              className="max-w-full h-auto mb-4"
               style={styles.sp4nImage}
             />
             <p>
               Sistem Pengelolaan Pengaduan Pelayanan Publik Nasional (SP4N) – Layanan Aspirasi dan Pengaduan Online Rakyat (LAPOR!)
             </p>
-            <div className="d-flex gap-3 flex-wrap justify-content-center justify-content-md-start mt-3">
+            <div className="flex gap-3 flex-wrap justify-center md:justify-start mt-3">
               <a
                 href="https://kominfo.lapor.go.id/"
                 target="_blank"
                 rel="noreferrer"
-                className="btn btn-primary btn-lg"
+                className="bg-blue-500 text-white px-6 py-3 rounded hover:bg-blue-600 text-lg"
               >
                 Lapor Kominfo
               </a>
@@ -44,7 +44,7 @@ const LaporSp4n = () => {
                 href="https://www.lapor.go.id/"
                 target="_blank"
                 rel="noreferrer"
-                className="btn btn-secondary btn-lg"
+                className="bg-gray-500 text-white px-6 py-3 rounded hover:bg-gray-600 text-lg"
               >
                 Lapor!
               </a>
@@ -52,7 +52,7 @@ const LaporSp4n = () => {
           </div>
 
           {/* Kanan - Deskripsi */}
-          <div className="col-md-6" data-aos="fade-left">
+          <div className="" data-aos="fade-left">
             <h2 style={styles.sp4nSubtitle}>
               Layanan Aspirasi dan Pengaduan Online Rakyat (LAPOR!)
             </h2>

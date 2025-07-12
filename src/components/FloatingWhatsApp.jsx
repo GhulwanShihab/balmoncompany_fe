@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
 
-// Komponen SVG WhatsApp Icon
 const WhatsAppIcon = ({ size = 32, color = "white" }) => (
   <svg 
     xmlns="http://www.w3.org/2000/svg" 
@@ -18,19 +17,11 @@ const FloatingWhatsApp = () => {
   const [name, setName] = useState('');
   const [message, setMessage] = useState('');
   const [subject, setSubject] = useState('');
-  // Memperbaiki variabel yang tidak digunakan
-  // const [isLoading, setIsLoading] = useState(false);
-  // const [showTooltip, setShowTooltip] = useState(false);
-  const [isLoading, setIsLoading] = useState(false); // Tetap menggunakan isLoading karena dipakai di handleSubmit
+  const [isLoading, setIsLoading] = useState(false);
   const popupRef = useRef(null);
   
-  // No. WhatsApp customer service Balmon Lampung
-  const whatsappNumber = '6285266666910'; // Ganti dengan nomor WA sebenarnya
-  
-  // Hapus serviceOptions karena tidak digunakan atau tambahkan implementasinya jika diperlukan
-  // const serviceOptions = [...];
+  const whatsappNumber = '6285266666910';
 
-  // Efek untuk menangani klik di luar popup
   useEffect(() => {
     function handleClickOutside(event) {
       if (popupRef.current && !popupRef.current.contains(event.target)) {
@@ -47,24 +38,20 @@ const FloatingWhatsApp = () => {
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, [isOpen]); // Menambahkan isOpen ke dependency array
+  }, [isOpen]);
 
-  // Menampilkan tooltip setelah beberapa detik (dimodifikasi untuk menghindari error)
   useEffect(() => {
-    // Kita tidak menggunakan showTooltip, jadi tooltip sementara dihapus
-    // atau Anda bisa mengimplementasikannya kembali jika diperlukan
     const tooltipTimer = setTimeout(() => {
       // Implementasi tooltip jika diperlukan
     }, 3000);
     
     return () => clearTimeout(tooltipTimer);
-  }, [isOpen]); // Menambahkan isOpen sebagai dependency
+  }, [isOpen]);
   
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsLoading(true);
     
-    // Format pesan untuk WhatsApp
     const formattedMessage = encodeURIComponent(
       `*Pesan dari Website Balmon Lampung*\n\n` +
       `*Nama:* ${name}\n` +
@@ -72,12 +59,9 @@ const FloatingWhatsApp = () => {
       `*Pesan:* ${message}`
     );
     
-    // Simulasi loading (bisa dihapus di produksi)
     setTimeout(() => {
-      // Buka WhatsApp dengan pesan yang sudah diformat
       window.open(`https://wa.me/${whatsappNumber}?text=${formattedMessage}`, '_blank');
       
-      // Reset form dan tutup popup
       setName('');
       setSubject('');
       setMessage('');
@@ -88,9 +72,8 @@ const FloatingWhatsApp = () => {
 
   return (
     <>
-      {/* Tombol Floating WhatsApp */}
       <button
-        className="floating-whatsapp-button"
+        className="fixed bottom-5 right-5 w-15 h-15 rounded-full bg-green-500 text-white flex items-center justify-center text-xl border-none shadow-lg cursor-pointer z-50 transition-all duration-300 hover:scale-110 hover:shadow-xl"
         onClick={() => setIsOpen(true)}
         aria-label="Hubungi kami via WhatsApp"
         title="Hubungi kami via WhatsApp"
@@ -98,13 +81,12 @@ const FloatingWhatsApp = () => {
         <WhatsAppIcon />
       </button>
 
-      {/* Popup Form */}
       {isOpen && (
-        <div className="floating-whatsapp-popup" ref={popupRef}>
-          <div className="floating-whatsapp-header">
-            <h3>Customer Service Balmon Lampung</h3>
+        <div className="fixed bottom-24 right-5 w-80 bg-white rounded-lg shadow-xl z-50 overflow-hidden" ref={popupRef}>
+          <div className="bg-teal-700 text-white p-4 flex justify-between items-center">
+            <h3 className="m-0 text-base">Customer Service Balmon Lampung</h3>
             <button 
-              className="close-button" 
+              className="bg-transparent border-none text-white text-2xl cursor-pointer"
               onClick={() => setIsOpen(false)}
               aria-label="Tutup"
             >
@@ -112,48 +94,52 @@ const FloatingWhatsApp = () => {
             </button>
           </div>
           
-          <div className="floating-whatsapp-body">
+          <div className="p-5">
             <form onSubmit={handleSubmit}>
-              <div className="form-group">
-                <label htmlFor="name">Nama Anda</label>
+              <div className="mb-4">
+                <label htmlFor="name" className="block mb-1 font-bold text-gray-600">Nama Anda</label>
                 <input
                   type="text"
                   id="name"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="form-control"
+                  className="w-full p-2 border border-gray-300 rounded text-sm"
                   placeholder="Masukkan nama anda"
                   required
                 />
               </div>
               
-              <div className="form-group">
-                <label htmlFor="subject">Perihal</label>
+              <div className="mb-4">
+                <label htmlFor="subject" className="block mb-1 font-bold text-gray-600">Perihal</label>
                 <input
                   type="text"
                   id="subject"
                   value={subject}
                   onChange={(e) => setSubject(e.target.value)}
-                  className="form-control"
+                  className="w-full p-2 border border-gray-300 rounded text-sm"
                   placeholder="Perihal pesan anda"
                   required
                 />
               </div>
               
-              <div className="form-group">
-                <label htmlFor="message">Pesan</label>
+              <div className="mb-4">
+                <label htmlFor="message" className="block mb-1 font-bold text-gray-600">Pesan</label>
                 <textarea
                   id="message"
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
-                  className="form-control"
+                  className="w-full p-2 border border-gray-300 rounded text-sm resize-y"
                   placeholder="Silahkan tulis pesan anda disini..."
                   rows="4"
                   required
                 ></textarea>
               </div>
               
-              <button type="submit" className="btn-submit" disabled={isLoading}>
+              <button 
+                type="submit" 
+                className="w-full p-3 bg-green-500 text-white border-none rounded text-base font-bold cursor-pointer transition-colors duration-300 hover:bg-teal-600 disabled:bg-green-300 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                disabled={isLoading}
+              >
                 {isLoading ? 'Mengirim...' : (
                   <>
                     <WhatsAppIcon size={18} /> Kirim via WhatsApp
@@ -165,134 +151,12 @@ const FloatingWhatsApp = () => {
         </div>
       )}
 
-      {/* Overlay untuk menutup popup saat klik di luar */}
       {isOpen && (
         <div 
-          className="floating-whatsapp-overlay"
+          className="fixed inset-0 bg-black bg-opacity-50 z-40"
           onClick={() => setIsOpen(false)}
         ></div>
       )}
-
-      {/* CSS Inline untuk komponen */}
-      <style jsx>{`
-        .floating-whatsapp-button {
-          position: fixed;
-          bottom: 20px;
-          right: 20px;
-          width: 60px;
-          height: 60px;
-          border-radius: 50%;
-          background-color: #25D366;
-          color: white;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          font-size: 32px;
-          border: none;
-          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-          cursor: pointer;
-          z-index: 1000;
-          transition: all 0.3s ease;
-        }
-
-        .floating-whatsapp-button:hover {
-          transform: scale(1.1);
-          box-shadow: 0 6px 14px rgba(0, 0, 0, 0.4);
-        }
-
-        .floating-whatsapp-overlay {
-          position: fixed;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          background-color: rgba(0, 0, 0, 0.5);
-          z-index: 1001;
-        }
-
-        .floating-whatsapp-popup {
-          position: fixed;
-          bottom: 90px;
-          right: 20px;
-          width: 320px;
-          background-color: white;
-          border-radius: 10px;
-          box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
-          z-index: 1002;
-          overflow: hidden;
-        }
-
-        .floating-whatsapp-header {
-          background-color: #075E54;
-          color: white;
-          padding: 15px 20px;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-        }
-
-        .floating-whatsapp-header h3 {
-          margin: 0;
-          font-size: 16px;
-        }
-
-        .close-button {
-          background: none;
-          border: none;
-          color: white;
-          font-size: 24px;
-          cursor: pointer;
-        }
-
-        .floating-whatsapp-body {
-          padding: 20px;
-        }
-
-        .form-group {
-          margin-bottom: 15px;
-        }
-
-        .form-group label {
-          display: block;
-          margin-bottom: 5px;
-          font-weight: bold;
-          color: #555;
-        }
-
-        .form-control {
-          width: 100%;
-          padding: 10px;
-          border: 1px solid #ddd;
-          border-radius: 5px;
-          font-size: 14px;
-        }
-
-        textarea.form-control {
-          resize: vertical;
-        }
-
-        .btn-submit {
-          width: 100%;
-          padding: 12px;
-          background-color: #25D366;
-          color: white;
-          border: none;
-          border-radius: 5px;
-          font-size: 16px;
-          font-weight: bold;
-          cursor: pointer;
-          transition: background-color 0.3s ease;
-        }
-
-        .btn-submit:hover {
-          background-color: #128C7E;
-        }
-
-        .btn-submit:disabled {
-          background-color: #7fd8a0;
-          cursor: not-allowed;
-        }
-      `}</style>
     </>
   );
 };
